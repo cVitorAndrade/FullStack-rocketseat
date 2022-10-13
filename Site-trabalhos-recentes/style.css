@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    font-size: 62.5%;
+
+    --ff-heading : 'Epilogue', sans-serif;
+    --ff-texting: 'Open Sans', sans-serif;
+
+    --hue: 250;
+    --bg-primary: hsl(var(--hue), 22%, 20%);
+    --fc-primary: hsl(var(--hue), 0%, 100%);
+    --fc-secundary: hsl(var(--hue), 50%, 80%);
+    /* --fc-secundary-dark: hsla(var(--hue), 100%, 11%, 1) */
+
+    --fs-body: 1.6rem;
+    --fs-heading: 4rem;
+}
+body {
+    font-family: var(--ff-texting);
+    color: var(--fc-primary);
+    font-size: var(--fs-body);
+    background: var(--bg-primary);
+}
+header {
+    margin: 10rem 0 8rem;
+
+    font-family: var(--ff-heading);
+    text-align: center;
+}
+header p {
+    color: var(--fc-secundary);
+    text-transform: uppercase;
+    font-weight: 400;
+
+    line-height: 3.2rem;
+    letter-spacing: 3px;
+
+    margin-bottom: 1.7rem;
+}
+header h1 {
+    font-weight: 800;
+    font-size: var(--fs-heading);
+    line-height: 4.8rem;
+}
+.page {
+    max-width: 33rem;
+    margin: 0 auto;
+}
+main {
+    display: grid;
+    gap: 3.2rem;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+.card {
+    position: relative;
+    font-family: var(--ff-heading);
+}
+
+.card img {
+    height: 41.6rem;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: all 400ms;
+}
+.card h2 {
+    display:flex;
+    flex-direction: column;
+    gap: 2.3rem;
+    position: absolute;
+    bottom: 5.2rem;
+    left: 2.8rem;
+
+    font-weight: 800;
+    font-size: var(--fs-heading);
+    line-height: 4.8rem;
+}
+.card h2 span {
+    display: inline-flex;
+    align-items: center;
+    line-height: 3.2rem;
+    font-size: var(--fs-body);
+    font-weight: 400;
+    color: #090039;
+
+    border-radius: 2rem;
+    background: var(--fc-primary);
+    padding: 0 1.6rem;
+    height: 3.8rem;
+    width: fit-content;
+}
+img:hover {
+    transform: scale(1.1);
+    opacity: 0.4;
+}
+header p{
+    animation: topdown 700ms;
+}
+header h1{
+    animation: topdown 700ms 350ms forwards;
+    opacity: 0;
+    transform: translateY(15px);
+}
+main {
+    animation: downtop 700ms 500ms backwards;
+}
+@keyframes topdown {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes downtop {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+/* }
+@keyframes leftToRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+} */
