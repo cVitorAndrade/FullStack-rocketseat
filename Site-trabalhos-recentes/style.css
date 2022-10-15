@@ -13,10 +13,10 @@
     --bg-primary: hsl(var(--hue), 22%, 20%);
     --fc-primary: hsl(var(--hue), 0%, 100%);
     --fc-secundary: hsl(var(--hue), 50%, 80%);
-    /* --fc-secundary-dark: hsla(var(--hue), 100%, 11%, 1) */
 
     --fs-body: 1.6rem;
     --fs-heading: 4rem;
+    --fs-heading-sm: clamp(3rem, 0.5rem + 3vw, 4rem);
 }
 body {
     font-family: var(--ff-texting);
@@ -39,11 +39,17 @@ header p {
     letter-spacing: 3px;
 
     margin-bottom: 1.7rem;
+
+    animation: topdown 700ms;
 }
 header h1 {
     font-weight: 800;
     font-size: var(--fs-heading);
     line-height: 4.8rem;
+
+    animation: topdown 700ms 350ms forwards;
+    opacity: 0;
+    transform: translateY(15px);
 }
 .page {
     max-width: 33rem;
@@ -52,6 +58,9 @@ header h1 {
 main {
     display: grid;
     gap: 3.2rem;
+    padding-bottom: 10rem;
+    animation: downtop 700ms 500ms backwards;
+
 }
 img {
     width: 100%;
@@ -67,6 +76,7 @@ img {
     object-fit: cover;
     border-radius: 6px;
     transition: all 400ms;
+    filter: brightness(0.5);
 }
 .card h2 {
     display:flex;
@@ -77,7 +87,7 @@ img {
     left: 2.8rem;
 
     font-weight: 800;
-    font-size: var(--fs-heading);
+    font-size: var(--fs-heading-sm);
     line-height: 4.8rem;
 }
 .card h2 span {
@@ -97,18 +107,40 @@ img {
 img:hover {
     transform: scale(1.1);
     opacity: 0.4;
+    filter: brightness(1);
 }
-header p{
-    animation: topdown 700ms;
-}
-header h1{
-    animation: topdown 700ms 350ms forwards;
-    opacity: 0;
-    transform: translateY(15px);
-}
+/* Media */
+
+@media (min-width: 700px) {
+    .page {
+        max-width: 117rem;
+        padding: 0 5rem;
+    }
 main {
-    animation: downtop 700ms 500ms backwards;
+    grid: 1fr 1fr;
 }
+    
+}
+@media (min-width: 930px) {
+    main {
+        grid-template-areas: "A B B" 
+        "C C D";
+    }
+    main div:nth-child(1) {
+        grid-area: A; 
+    }
+    main div:nth-child(2) {
+        grid-area: B; 
+    }
+    main div:nth-child(3) {
+        grid-area: C; 
+    }
+    main div:nth-child(4) {
+        grid-area: D; 
+    }
+}
+
+/* Keyframes */
 @keyframes topdown {
     0% {
         opacity: 0;
@@ -128,14 +160,4 @@ main {
         opacity: 1;
         transform: translateY(0);
     }
-/* }
-@keyframes leftToRight {
-    0% {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-} */
+}
